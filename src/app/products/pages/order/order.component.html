@@ -1,0 +1,64 @@
+<p-panel header="Pipes Personalizados" class="p-2">
+  <p>
+    Pipes Personalizados - Creados By {{ 'me' | toggleCase:isUpperCase }}
+  </p>
+</p-panel>
+
+<p-toolbar styleClass="bg-gray-900 shadow-2" [style]="{'justify-content':'center',
+  'border-radius': '3rem',
+  'background-image': 'linear-gradient(to right, var(--bluegray-500), var(--bluegray-800))' }">
+  <div class="flex flex-wrap align-items-center gap-8">
+    <button class="p-link mr-6 p-2 inline-flex justify-content-end align-items-center
+        text-white h-3rem border-circle hover:bg-white-alpha-10
+        transition-all transition-duration-200"
+        (click)="toogleUpperCase()">
+        <i class="pi pi-home text-2xl pr-2"></i>
+        ToogleCase
+      </button>
+      <button class=" p-link p-2 inline-flex justify-content-center align-items-center
+        text-white h-3rem border-circle hover:bg-white-alpha-10 transition-all
+        transition-duration-200"
+        (click)="changeOrderBy('name')">
+        <i class="pi pi-user text-2xl pr-2"></i>
+        Por nombre
+      </button>
+
+      <button class="p-link p-2 inline-flex justify-content-center align-items-center
+        text-white h-3rem border-circle hover:bg-white-alpha-10 transition-all
+        transition-duration-200"
+        (click)="changeOrderBy('canFly')">
+        <i class="pi pi-search text-2xl pr-2"></i>
+        Por volar
+      </button>
+
+      <button class="p-link p-2 inline-flex justify-content-center align-items-center
+        text-white h-3rem border-circle hover:bg-white-alpha-10 transition-all
+        transition-duration-200"
+        (click)="changeOrderBy('color')">
+        <i class="pi pi-search text-2xl pr-2"></i>
+        Por color
+      </button>
+  </div>
+</p-toolbar>
+
+
+<div class="grid">
+  <div class="col mt-4">
+      <p-table [value]="heroes | sortBy:orderBy">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Vuela</th>
+                <th>Color</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-hero>
+            <tr>
+                <td>{{ hero.name }}</td>
+                <td>{{ hero.canFly | canFly}}</td>
+                <td>{{ hero.color }}</td>
+            </tr>
+        </ng-template>
+      </p-table>
+  </div>
+</div>

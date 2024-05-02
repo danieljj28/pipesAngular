@@ -1,0 +1,25 @@
+<p-panel header="Pipes numéricos" class="p-2">
+  <p>
+    Pipes incluídos en Angular- Usualmente en el Common Module
+  </p>
+</p-panel>
+
+<div class="grid">
+  <div class="col-12 md:col-4">
+    <p-card header="Ventas Netas" subheader="del presente año">
+      {{ (totalSells + 1235) | number:'1.2-2'}}
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <p-card header="Ventas Brutas" subheader="del presente año">
+      {{ totalSells | currency: 'HNL':'symbol-narrow':'1.4-4'}}
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <p-card header="Ganancia porcentual" subheader="del presente año">
+      {{ percent | percent}}
+    </p-card>
+  </div>
+</div>
